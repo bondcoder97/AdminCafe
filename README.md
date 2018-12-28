@@ -1,2 +1,2 @@
 # AdminCafe
-Information system of cafe
+Information system of <strong>cafe</strong>
