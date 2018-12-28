@@ -1,0 +1,8 @@
+{
+  "name" : "cafe",
+  "main" : "cafe.html",
+  "version" : "0.0.1",
+  "window" : {
+    "fullscreen": true
+  }
+}

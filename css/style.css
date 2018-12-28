@@ -1,0 +1,109 @@
+#logoText{
+    font-family: 'Lobster', cursive;
+    margin-left:2%;
+}
+
+.footer-copyright .container{
+   text-align: center;
+}
+
+
+.input-field input[type=text]:focus + label, .materialize-textarea:focus:not([readonly]) + label {
+color: #808000!important;
+}
+
+.input-field input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
+border-bottom: 1px solid #808000 !important;
+box-shadow: 0 1px 0 0 #808000 !important;
+}
+
+.input-field .prefix.active {
+ color: #808000;
+}
+
+
+ul.dropdown-content.select-dropdown li span {
+color: #808000; 
+}
+
+#modalTitle{
+text-align: center;
+}
+
+#myButton1{
+margin-left: 30%;
+margin-top: -0.8%;
+}
+
+#myButton2{
+margin-left: 30%;
+margin-top: -0.8%;
+}
+
+#myButton3{
+margin-left: 30%;
+margin-top: -0.8%;
+}
+
+tbody tr:hover{
+cursor: pointer;
+background-color: #808000 !important;
+}
+
+.modal-title{
+text-align: center !important;
+}
+
+#storageProduct{
+text-align: center;
+}
+
+#storageDish{
+text-align: center;
+}
+
+#storageOrder{
+    text-align: center;
+    }
+
+
+    table tr{
+        font-size: 0.9rem;
+     
+    }
+   
+.rightDish{
+    background-color: rgb(179, 146, 2);
+    border: #808000 solid 2px;   
+    border-radius: 3px;
+    color: white;
+    position: relative;
+    padding: 1% 5% 1% 1%;
+    margin-right: 3px;
+
+
+   
+}
+
+/* .wrongDish{
+
+} */
+
+.deleteWrap{
+  text-align: center;
+   color: white;
+   position: absolute;
+   height: 100%;
+   width: 20px;
+   right:0;
+   top:0;
+   cursor: pointer;
+
+}
+
+
+.hide{
+    display: none;
+}
+
+    

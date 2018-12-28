@@ -1,0 +1,911 @@
+<!doctype html>
+<html >
+<head>
+    <meta charset="UTF-8">
+   <link href="css/materialize.min.css" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <link href="css/style.css" rel="stylesheet">
+   <style>
+  
+       </style>
+   <script src="js/materialize.min.js">  </script>
+   
+  
+   
+   
+  
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js"> </script>
+  <script src="/socket.io/socket.io.js"></script>
+  
+   <script> 
+
+
+   </script>
+    <title>Кафе "Вкуснятина"</title>
+</head>
+<body>
+
+        <nav class="nav-extended #afb42b lime darken-2">
+                <div class="nav-wrapper">
+                  <a href="#" class="brand-logo" id="logoText">Вкуснятина</a>
+                 
+                  <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                  <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                  </ul>
+                </div>
+                <div class="nav-content">
+                  <ul class="tabs tabs-transparent">
+                    <li class="tab"><a href="#test1" class="active">Склад</a></li>
+                    <li class="tab"><a  href="#test2" >Блюда</a></li>
+                    <li class="tab "><a href="#test3">Заказы</a></li>
+                    <li class="tab"><a href="#test4"></a></li>
+                  </ul>
+                </div>
+              </nav>
+            
+              <ul class="sidenav" id="mobile-demo">
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+              </ul>
+            
+        
+
+              
+
+
+              <div id="test1" class="col s12">
+
+
+
+
+<div>
+        <table class="striped ">
+                <thead>
+                  <tr>
+                      <th>Продукт</th>
+                      <th>Описание</th>
+                      <th>Количество</th>
+                      <th>Тип</th>
+                      <th>Срок хранения</th>
+                      <th>Производитель</th>
+                      <th>Поставщик</th>
+                      <th>Место хранения</th>
+                      <th>Цена</th>
+                      <th>Вес</th>
+                  </tr>
+                </thead>
+        
+                <tbody id="storageTable1">
+                 
+                          
+                         
+        
+                </tbody>
+              </table>
+    
+              <ul class="pagination" >
+                
+                <li class="waves-effect"><a href="#!"><i class="material-icons" id="left1">chevron_left</i></a></li>
+              <span id="myPages">
+            
+            
+              </span>
+                <li class="waves-effect"><a href="#!"><i class="material-icons" id="right1">chevron_right</i></a></li>
+              </ul>
+
+  </div>
+
+
+            <div class="row">
+                    <form class="col s12">
+                     
+                     
+                      <div class="input-field col s2">
+                        <select id="searchParam1">
+                            <option value="" >Выберите параметр</option>
+                            <option value="productName" >Название продукта</option>
+                          <option value="productNumber">Количество</option>
+                          <option value="productType">Поставщик</option>   
+                            <option value="productDate" >Дата</option>
+                            <option value="productStoragePlace" >Место хранения</option>
+                          <option value="productProducer">Производитель</option>
+                          <option value="productImporter">Поставщик</option>
+                           <option value="productWeight" >Вес</option>
+                          <option value="productPrice">Цена</option>
+                          <option value="productDescribe">Описание</option>
+                        </select>
+                        <label>Поиск</label>
+                      </div>
+                     
+                     
+                     
+                     
+                      <div class="row col s2">
+                        <div class="input-field">
+                          <i class="material-icons prefix">search</i>
+                          <textarea id="searchValue1" class="materialize-textarea" ></textarea>
+                          <label for="searchValue1"  >Поиск</label>
+                        </div>
+                      </div>
+
+            <a class="btn-floating btn-large waves-effect waves-light #827717 lime darken-4 col s0.5" id="searchButton1"><i class="material-icons">search</i></a>
+
+
+                      <div class="input-field col s2">
+                            <select id="filterParam1">
+                                <option value="" >Выберите параметр</option>
+                              <option value="productStoragePlace" >Место хранения</option>
+                              <option value="productProducer">Производитель</option>
+                              <option value="productImporter">Поставщик</option>
+                              
+                            </select>
+                            <label>Фильтрация</label>
+                          </div>
+
+
+
+                          <div class="row col s2">
+                            <div class="input-field">
+          
+                              <textarea id="filterValue1" class="materialize-textarea" ></textarea>
+                              <label for="filterValue1"  >Значение фильтра</label>
+                            </div>
+
+                           
+                          </div>
+                          <a class="btn-floating btn-large waves-effect waves-light #827717 lime darken-4 col s0.5" id="filterButton1"><i class="material-icons">shuffle</i></a>
+
+                         
+                       
+
+
+
+
+                          <div class="input-field col s2">
+                                <select id="showFields">
+                                  <option value="10" >10 записей</option>
+                                  <option value="20">20 записей</option>
+                                  <option value="30">30 записей</option>
+                                  
+                                </select>
+                                <label>Отображение</label>
+                              </div>
+ 
+      
+
+                                       <!-- Modal Trigger -->
+             <a class="btn-floating btn-large waves-effect waves-light #827717 lime darken-4 modal-trigger" href="#modal1"><i class="material-icons">add</i></a>
+
+              <!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4 id="modalTitle">Добавление записи</h4>
+      
+      <div class="row">
+        <div class="input-field col s4">
+          <input value="" id="productName" type="text" class="validate">
+          <label class="active" for="productName">Продукт</label>
+        </div>
+       
+        <div class="input-field col s4">
+          <input value="" id="productWeight" type="text" class="validate">
+          <label class="active" for="productWeight">Вес</label>
+        </div>
+
+        <div class="input-field col s4">
+          <input value="" id="productNumber" type="text" class="validate">
+          <label class="active" for="productNumber">Количество</label>
+        </div>
+
+        <div class="input-field col s4">
+          <input value="" id="productType" type="text" class="validate">
+          <label class="active" for="productType">Тип</label>
+        </div>
+
+        <div class="input-field col s4">
+          <input value="" id="productDate" type="text" class="validate">
+          <label class="active" for="productDate">Срок хранения</label>
+        </div>
+
+        <div class="input-field col s4">
+          <input value="" id="productProducer" type="text" class="validate">
+          <label class="active" for="productProducer">Производитель</label>
+        </div>
+
+        <div class="input-field col s4">
+          <input value="" id="productImporter" type="text" class="validate">
+          <label class="active" for="productImporter">Поставщик</label>
+        </div>
+
+        <div class="input-field col s4">
+          <input value="" id="productStoragePlace" type="text" class="validate">
+          <label class="active" for="storagePlace">Место хранения</label>
+        </div>
+
+        <div class="input-field col s4">
+          <input value="" id="productPrice" type="text" class="validate">
+          <label class="active" for="productPrice">Цена </label>
+        </div>
+
+        <div class="input-field col s12">
+          <input value="" id="productDescribe" type="text" class="validate">
+          <label class="active" for="productDescribe">Описание</label>
+        </div>
+
+
+         
+
+      </div>
+      
+      
+
+    </div>
+    <div class="modal-footer">
+
+<a class="waves-effect waves-light #827717 lime darken-4 btn-large col s5 modal-close"  id="myButton1">Добавить</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Закрыть</a>
+    </div>
+  </div>
+
+
+
+                    </form>
+                  </div>
+
+                </div>
+  
+
+
+
+                <!--Второе модальное окно-->
+
+
+                <div id="secondModal1" class="modal modal-fixed-footer">
+                  <div class="modal-content">
+                    <h4 id="storageProduct" >Продукт</h4>
+                    
+                    <div class="row">
+                     
+              
+                      <div class="input-field col s6">
+                          <input value="0" id="infoProductName" type="text"   >
+                          <label class="active" for="infoProductName">Продукт
+                        </div>
+
+                        <div class="input-field col s6">
+                          <input value="0" id="infoProductDescribe" type="text"   >
+                          <label class="active" for="infoProductDescribe">Описание</label>
+                        </div>
+
+                        <div class="input-field col s2">
+                          <input value="0" id="infoProductNumber" type="text"   >
+                          <label class="active" for="infoProductNumber">Количество</label>
+                        </div>
+
+                        <div class="input-field col s4">
+                          <input value="0" id="infoProductType" type="text"   >
+                          <label class="active" for="infoProductType">Тип</label>
+                        </div>
+
+                        <div class="input-field col s3">
+                          <input value="0" id="infoProductStorageTime" type="text"   >
+                          <label class="active" for="infoProductStorageTime">Срок хранения</label>
+                        </div>
+
+
+                        <div class="input-field col s3">
+                          <input value="0" id="infoProductProducer" type="text"   >
+                          <label class="active" for="infoProductProducer">Производитель</label>
+                        </div>
+
+                        <div class="input-field col s3">
+                          <input value="0" id="infoProductImporter" type="text"   >
+                          <label class="active" for="infoProductImporter">Поставщик</label>
+                        </div>
+
+                        <div class="input-field col s3">
+                          <input value="0" id="infoProductStoragePlace" type="text"   >
+                          <label class="active" for="infoProductStoragePlace">Место хранения</label>
+                        </div>
+
+                        <div class="input-field col s3">
+                          <input value="0" id="infoProductPrice" type="text"   >
+                          <label class="active" for="infoProductPrice">Цена</label>
+                        </div>
+
+                        <div class="input-field col s3">
+                          <input value="0" id="infoProductWeight" type="text"   >
+                          <label class="active" for="infoProductWeight">Вес</label>
+                        </div>
+              
+                    
+                <a class="waves-effect waves-light btn-large col s4 #1b5e20 green darken-4 modal-close" id="buttonChange1"  >Изменить</a>
+              
+                <a class="waves-effect waves-light btn-large col s4 #d50000 red accent-4 offset-s4 modal-close" id="buttonDelete1">Удалить</a>
+                      
+              
+                      
+              
+              
+                     
+                    
+              
+                    </div>
+                    
+                    
+              
+                  </div>
+                  <div class="modal-footer">
+              
+            
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Закрыть</a>
+                  </div>
+                </div>
+
+ 
+
+
+
+
+                <!-- Вторая вкладка-->
+                <div id="test2" class="col s12">
+
+        <div>       
+        <table class="striped">
+          <thead >
+            <tr>
+                <th>Название</th>
+                <th>Категория</th>
+                <th>Время приема</th>
+                <th>Цена</th>
+                <th>Себестоимость</th>
+                <th>Вес порции</th>
+                <th>Наличие на кухне</th>
+                <th>Рецепт</th>
+             
+            </tr>
+          </thead>
+  
+          <tbody id="storageTable2">
+         
+
+        
+                
+  
+          </tbody>
+        </table>
+
+        <ul class="pagination">
+                
+          <li class="waves-effect" ><a href="#!"><i class="material-icons" id="left2">chevron_left</i></a></li>
+        <span id="myPages2">
+      
+      
+        </span>
+          <li class="waves-effect"><a href="#!"><i class="material-icons" id="right2">chevron_right</i></a></li>
+        </ul>
+        </div>
+
+
+
+
+      <div class="row">
+        <form class="col s12">
+          <div class="input-field col s2">
+            <select id="searchParam2">
+                <option value="" >Выберите параметр</option>
+                <option value="dishName" >Название продукта</option>
+              <option value="dishCategory">Категория</option>
+              <option value="dishTime">Время</option>   
+                <option value="dishPrice" >Цена</option>
+                <option value="dishSelfprice" >Себестоимость</option>
+              <option value="dishWeight">Вес</option>
+              <option value="dishExist">Наличие на кухне</option>
+               <option value="dishRecipe" >Вес</option>
+              
+            </select>
+            <label>Поиск</label>
+          </div>
+         
+         
+         
+         
+          <div class="row col s2">
+            <div class="input-field">
+              <i class="material-icons prefix">search</i>
+              <textarea id="searchValue2" class="materialize-textarea" ></textarea>
+              <label for="searchValue2"  >Поиск</label>
+            </div>
+          </div>
+
+<a class="btn-floating btn-large waves-effect waves-light #827717 lime darken-4 col s0.5" id="searchButton2"><i class="material-icons">search</i></a>
+
+          
+
+          <div class="input-field col s2">
+                <select id="filterParam2">
+                    <option value="" >Выберите параметр</option>
+                  <option value="dishCategory" >Категория</option>
+                  <option value="dishExist">Наличие на кухне</option>
+                  <option value="dishTime">Время приема</option>
+                  
+                </select>
+                <label>Фильтрация</label>
+              </div>
+
+
+
+              <div class="row col s2">
+                <div class="input-field">
+
+                  <textarea id="filterValue2" class="materialize-textarea" ></textarea>
+                  <label for="filterValue2">Значение фильтра</label>
+                </div>
+              </div>
+           
+              <a class="btn-floating btn-large waves-effect waves-light #827717 lime darken-4 col s0.5" id="filterButton2"><i class="material-icons">shuffle</i></a>
+
+
+
+
+              <div class="input-field col s2">
+                    <select id="showFields2">
+                      <option value="10" >10 записей</option>
+                      <option value="20">20 записей</option>
+                      <option value="30">30 записей</option>
+                    </select>
+                    <label>Отображение</label>
+                  </div>
+
+                    
+              
+                                              <!-- Modal Trigger -->
+             <a class="btn-floating btn-large waves-effect waves-light #827717 lime darken-4 modal-trigger" href="#modal2"><i class="material-icons">add</i></a>
+
+             <!-- Modal Structure -->
+ <div id="modal2" class="modal modal-fixed-footer">
+   <div class="modal-content">
+     <h4 id="modalTitle">Добавление записи</h4>
+     
+     <div class="row">
+       <div class="input-field col s12">
+         <input value="" id="dishesName" type="text" class="validate">
+         <label class="active" for="dishesName">Название</label>
+       </div>
+
+       <div class="input-field col s12">
+          <input value="" id="dishesRecipe" type="text" class="validate">
+          <label class="active" for="dishesRecipe">Рецепт</label>
+        </div>
+      
+        <div class="input-field col s4">
+            <input value="" id="dishesTime" type="text" class="validate">
+            <label class="active" for="dishesTime">Время приема</label>
+          </div>
+          
+          <div class="input-field col s4">
+             <input value="" id="dishesPrice" type="text" class="validate">
+             <label class="active" for="dishesPrice">Цена</label>
+           </div>
+
+           <div class="input-field col s4">
+              <input value="" id="dishesSelfprice" type="text" class="validate">
+              <label class="active" for="dishesSelfprice">Себестоимость</label>
+            </div>
+            
+            <div class="input-field col s4">
+               <input value="" id="dishesWeight" type="text" class="validate">
+               <label class="active" for="dishesWeight">Вес порции</label>
+             </div>
+
+             <div class="input-field col s4">
+                <input value="" id="dishesExist" type="text" class="validate">
+                <label class="active" for="dishesExist">Наличие на кухне</label>
+              </div>
+              
+              <div class="input-field col s4">
+                 <input value="" id="dishesCategory" type="text" class="validate">
+                 <label class="active" for="dishesCategory">Категория</label>
+               </div>
+      
+       
+
+     </div>
+     
+     
+
+   </div>
+   <div class="modal-footer">
+
+<a class="waves-effect waves-light #827717 lime darken-4 btn-large col s5 modal-close" id="myButton2" >Добавить</a>
+     <a href="#!" class="modal-close waves-effect waves-green btn-flat">Закрыть</a>
+   </div>
+ </div>
+              
+              
+              
+              
+              
+              
+                      </form>
+            </div>
+
+          </div>
+
+                </div>
+
+
+
+
+
+
+
+
+
+                  <!--Второе модальное окно-->
+
+
+                  <div id="secondModal2" class="modal modal-fixed-footer">
+                    <div class="modal-content">
+                      <h4 id="storageDish" >Блюдо</h4>
+                      
+                      <div class="row">
+                       
+                
+                        <div class="input-field col s6">
+                            <input value="0" id="infoDishName" type="text"   >
+                            <label class="active" for="infoDishName">Название
+                          </div>
+  
+                          <div class="input-field col s6">
+                            <input value="0" id="infoDishCategory" type="text"   >
+                            <label class="active" for="infoDishCategory">Категория</label>
+                          </div>
+  
+                          <div class="input-field col s3">
+                            <input value="0" id="infoDishTime" type="text"   >
+                            <label class="active" for="infoDishTime">Время приема</label>
+                          </div>
+  
+                          <div class="input-field col s3">
+                            <input value="0" id="infoDishPrice" type="text"   >
+                            <label class="active" for="infoDishPrice">Цена</label>
+                          </div>
+  
+                          <div class="input-field col s3">
+                            <input value="0" id="infoDishSelfprice" type="text"   >
+                            <label class="active" for="infoDishSelfprice">Себестоимость</label>
+                          </div>
+  
+  
+                          <div class="input-field col s3">
+                            <input value="0" id="infoDishWeight" type="text"   >
+                            <label class="active" for="infoDishWeight">Вес порции</label>
+                          </div>
+  
+                          <div class="input-field col s3">
+                            <input value="0" id="infoDishExist" type="text"   >
+                            <label class="active" for="infoDishExist">Наличие на кухне</label>
+                          </div>
+  
+                          <div class="input-field col s9">
+                            <input value="0" id="infoDishRecipe" type="text"   >
+                            <label class="active" for="infoDishRecipe">Рецепт</label>
+                          </div>
+  
+            
+                
+                      
+                        
+                          <a class="waves-effect waves-light btn-large col s4 #1b5e20 green darken-4 modal-close" id="buttonChange2"  >Изменить</a>
+                
+                          <a class="waves-effect waves-light btn-large col s4 #d50000 red accent-4 offset-s4 modal-close" id="buttonDelete2">Удалить</a>
+                        
+                
+                        
+                
+                
+                       
+                      
+                
+                      </div>
+                      
+                      
+                
+                    </div>
+                    <div class="modal-footer">
+                
+              
+                      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Закрыть</a>
+                    </div>
+                  </div>
+  
+  
+  
+
+
+               <!-- Третья вкладка-->
+               <div>
+                <div id="test3" class="col s12">
+                  <div>
+                  <table class="striped">
+                    <thead>
+                      <tr>
+                          <th>Код заказа</th>
+                          <th>Время</th>
+                          <th>Дата</th>
+                          <th>Стоимость</th>
+                          <th>Статус оплаты</th>
+                          <th>Заказанные блюда</th>
+                          
+                       
+                      </tr>
+                    </thead>
+            
+                    <tbody id="storageTable3">
+                   
+                             
+                             
+            
+                    </tbody>
+                  </table>
+
+                  <ul class="pagination">
+                
+                    <li class="waves-effect"><a href="#!"><i class="material-icons" id="left3">chevron_left</i></a></li>
+                  <span id="myPages3">
+                
+                
+                  </span>
+                    <li class="waves-effect"><a href="#!"><i class="material-icons" id="right3">chevron_right</i></a></li>
+                  </ul>
+
+                </div>
+          
+                
+          
+          
+          
+          
+                <div class="row">
+                  <form class="col s12">
+                    
+                    <div class="input-field col s2">
+                      <select id="searchParam3">
+                          <option value="" >Выберите параметр</option>
+                          <option value="orderId" >ID заказа</option>
+                        <option value="orderPrice">Стоимость</option>
+                        <option value="orderTime">Время</option>   
+                          <option value="orderDate" >Дата</option>
+                          <option value="paymentStatus" >Статус оплаты</option>
+                        <!-- <option value="productProducer">Блюда</option> -->
+                       
+                      </select>
+                      <label>Поиск</label>
+                    </div>
+                   
+                   
+                   
+                   
+                    <div class="row col s2">
+                      <div class="input-field">
+                        <i class="material-icons prefix">search</i>
+                        <textarea id="searchValue3" class="materialize-textarea" ></textarea>
+                        <label for="searchValue3"  >Поиск</label>
+                      </div>
+                    </div>
+
+          <a class="btn-floating btn-large waves-effect waves-light #827717 lime darken-4 col s0.5" id="searchButton3"><i class="material-icons">search</i></a>
+
+
+                    
+
+                    <div class="input-field col s2">
+                          <select id="filterParam3">
+                              <option value="" >Выберите параметр</option>
+                            <option value="orderDate" >Дата заказа</option>
+                            <option value="paymentStatus">Статус оплаты</option>
+                            
+                            
+                          </select>
+                          <label>Фильтрация</label>
+                        </div>
+
+
+
+                        <div class="row col s2">
+                          <div class="input-field">
+        
+                            <textarea id="filterValue3" class="materialize-textarea" ></textarea>
+                            <label for="filterValue3"  >Значение фильтра</label>
+                          </div>
+                        </div>
+                     
+
+                        <a class="btn-floating btn-large waves-effect waves-light #827717 lime darken-4 col s0.5" id="filterButton3"><i class="material-icons">shuffle</i></a>
+
+
+                        <div class="input-field col s2">
+                              <select id="showFields3">
+                                <option value="10" >10 записей</option>
+                                <option value="20">20 записей</option>
+                                <option value="30">30 записей</option>
+                       
+                              </select>
+                              <label>Отображение</label>
+                            </div>
+          
+                                
+
+
+
+
+
+                                   <!-- Modal Trigger -->
+             <a class="btn-floating btn-large waves-effect waves-light #827717 lime darken-4 modal-trigger" href="#modal3"><i class="material-icons">add</i></a>
+
+             <!-- Modal Structure -->
+ <div id="modal3" class="modal modal-fixed-footer">
+   <div class="modal-content">
+     <h4 id="modalTitle">Добавление записи</h4>
+     
+     <div class="row">
+       <div class="input-field col s6">
+         <input value="" id="orderId" type="text" class="validate">
+         <label class="active" for="orderId">Код заказа</label>
+       </div>
+
+       <div class="input-field col s6">
+          <input value="" id="orderTime" type="text" class="validate">
+          <label class="active" for="orderTime">Время</label>
+        </div>
+
+        <div class="input-field col s4">
+          <input value="" id="orderDate" type="text" class="validate">
+          <label class="active" for="orderDate">Дата</label>
+        </div>
+      
+        <div class="input-field col s4">
+            <input value="" id="orderPrice" type="text" class="validate">
+            <label class="active" for="orderPrice">Стоимость</label>
+          </div>
+
+          <div class="input-field col s4">
+              <input value="" id="paymentStatus" type="text" class="validate">
+              <label class="active" for="paymentStatus">Статус оплаты</label>
+            </div>
+          
+            <div class="input-field col s12">
+                <input value="" id="orderDishes" type="text" class="validate tooltipped" data-position="top" data-tooltip="Вводите блюда в формате: Блюдо - количество;">
+                <label class="active" for="orderDishes">Заказанные блюда</label>
+              </div>
+              
+          
+        
+       
+
+     </div>
+     
+     
+
+   </div>
+   <div class="modal-footer">
+
+<a class="waves-effect waves-light #827717 lime darken-4 btn-large col s5" id="myButton3" >Добавить</a>
+     <a href="#!" class="modal-close waves-effect waves-green btn-flat">Закрыть</a>
+   </div>
+ </div>
+                        </form>
+                      </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+                  <!--Второе модальное окно-->
+
+
+                  <div id="secondModal3" class="modal modal-fixed-footer">
+                    <div class="modal-content">
+                      <h4 id="storageOrder" >Продукт</h4>
+                      
+                      <div class="row">
+                       
+  
+                          <div class="input-field col s6">
+                            <input value="0" id="infoOrderTime" type="text"   >
+                            <label class="active" for="infoOrderTime">Время</label>
+                          </div>
+
+                          <div class="input-field col s6">
+                            <input value="0" id="infoOrderDate" type="text"   >
+                            <label class="active" for="infoOrderDate">Дата</label>
+                          </div>
+  
+                          <div class="input-field col s6">
+                            <input value="0" id="infoOrderPrice" type="text"   >
+                            <label class="active" for="infoOrderPrice">Стоимость</label>
+                          </div>
+
+                          <div class="input-field col s6">
+                            <input value="0" id="infoOrderPaymentStatus" type="text"   >
+                            <label class="active" for="infoOrderPaymentStatus">Статус оплаты</label>
+                          </div>
+  
+                          <div class="input-field col s12">
+                            <input value="0" id="infoOrderDishesList"  type="text"   >
+                            <label class="active" for="infoOrderDishesList">Заказанные блюда</label>
+                          </div>
+  
+  
+                         
+                      
+                        
+                          <a class="waves-effect waves-light btn-large col s4 #1b5e20 green darken-4 modal-close" id="buttonChange3"  >Изменить</a>
+                
+                          <a class="waves-effect waves-light btn-large col s4 #d50000 red accent-4 offset-s4 modal-close" id="buttonDelete3">Удалить</a>
+                        
+                
+                        
+                
+                
+                       
+                      
+                
+                      </div>
+                      
+                      
+                
+                    </div>
+                    <div class="modal-footer">
+                
+              
+                      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Закрыть</a>
+                    </div>
+                  </div>
+
+
+
+         
+
+ 
+
+
+              <footer class="page-footer #afb42b lime darken-2">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col l6 s12">
+                          
+                          
+                        </div>
+                        <div class="col l4 offset-l2 s12">
+                          
+                          
+                        </div>
+                      </div>
+                    </div>
+                    <div class="footer-copyright">
+                      <div class="container">
+                      © 2018 bondcoder
+           
+                      </div>
+                    </div>
+                  </footer>
+                
+
+                  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+                  <script src="js/main.js"></script>
+</body>
+</html>
